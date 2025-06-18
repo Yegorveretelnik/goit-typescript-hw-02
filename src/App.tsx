@@ -7,17 +7,17 @@ import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./components/ImageModal/ImageModal";
 import { Toaster } from "react-hot-toast";
-
+import { Image } from "./components/types";
 const ACCESS_KEY = "o20-tw0-pmBeUAqgCX0EWyP9x92-LAezxQu-gcbJYEg";
 
 function App() {
-  const [query, setQuery] = useState("");
-  const [images, setImages] = useState([]);
-  const [page, setPage] = useState(1);
-  const [isLoading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [selected, setSelected] = useState(null);
-  const [totalPages, setTotalPages] = useState(0);
+  const [query, setQuery] = useState<string>("");
+  const [images, setImages] = useState<Image[]>([]);
+  const [page, setPage] = useState<number>(1);
+  const [isLoading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [selected, setSelected] = useState<Image | null>(null);
+  const [totalPages, setTotalPages] = useState<number>(0);
 
   useEffect(() => {
     if (!query) return;
@@ -52,15 +52,15 @@ function App() {
     fetchImages();
   }, [query, page]);
 
-  const handleSearch = (newQuery) => {
+  const handleSearch = (newQuery: string): void => {
     setQuery(newQuery);
     setImages([]);
     setPage(1);
   };
 
-  const handleLoadMore = () => setPage((prev) => prev + 1);
-  const handleSelect = (img) => setSelected(img);
-  const closeModal = () => setSelected(null);
+  const handleLoadMore = (): void => setPage((prev) => prev + 1);
+  const handleSelect = (img: Image): void => setSelected(img);
+  const closeModal = (): void => setSelected(null);
 
   return (
     <>
