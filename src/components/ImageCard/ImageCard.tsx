@@ -7,7 +7,7 @@ interface ImageCardProps {
 export default function ImageCard({ image, onClick }: ImageCardProps) {
   return (
     <div className={css.card} onClick={() => onClick(image)}>
-      <img src={image.urls.small} alt={image.alt_description} />
+      <img src={image.urls.small} alt={image.alt_description ?? undefined} />
     </div>
   );
 }

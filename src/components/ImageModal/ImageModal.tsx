@@ -22,7 +22,7 @@ export default function ImageModal({
       className={css.modal}
       overlayClassName={css.overlay}
     >
-      <img src={image.urls.regular} alt={image.alt_description} />
+      <img src={image.urls.regular} alt={image.alt_description ?? undefined} />
       <p>{image.description || "No description"}</p>
       <p>By: {image.user.name}</p>
       <p>Likes: {image.likes}</p>
